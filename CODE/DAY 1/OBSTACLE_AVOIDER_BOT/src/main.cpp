@@ -24,10 +24,60 @@ float left_distance, right_distance;
   digitalWrite(trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(trig, LOW);
-  temp = pulseIn(echo, HIGH);
-  distance = temp / 58.0;
+  duration = pulseIn(echo, HIGH);
+  distance = duration * 0.034 / 2;
   return distance;
  }
+
+void moveForward()
+{
+  digitalWrite(LEFT_MOTOR_1, HIGH);
+  digitalWrite(LEFT_MOTOR_2, LOW);
+  digitalWrite(RIGHT_MOTOR_1, HIGH);
+  digitalWrite(RIGHT_MOTOR_2, LOW);
+  analogWrite(LMOTOR_PWM, LEFT_SPEED);
+  analogWrite(RMOTOR_PWM, RIGHT_SPEED);
+}
+
+void moveBackward()
+{
+  digitalWrite(LEFT_MOTOR_1, LOW);
+  digitalWrite(LEFT_MOTOR_2, HIGH);
+  digitalWrite(RIGHT_MOTOR_1, LOW);
+  digitalWrite(RIGHT_MOTOR_2, HIGH);
+  analogWrite(LMOTOR_PWM, LEFT_SPEED);
+  analogWrite(RMOTOR_PWM, RIGHT_SPEED);
+}
+
+void moveLeft()
+{
+  digitalWrite(LEFT_MOTOR_1, HIGH);
+  digitalWrite(LEFT_MOTOR_2, LOW);
+  digitalWrite(RIGHT_MOTOR_1, LOW);
+  digitalWrite(RIGHT_MOTOR_2, HIGH);
+  analogWrite(LMOTOR_PWM, LEFT_SPEED);
+  analogWrite(RMOTOR_PWM, RIGHT_SPEED);
+}
+
+void moveRight()
+{
+  digitalWrite(LEFT_MOTOR_1, LOW);
+  digitalWrite(LEFT_MOTOR_2, HIGH);
+  digitalWrite(RIGHT_MOTOR_1, HIGH);
+  digitalWrite(RIGHT_MOTOR_2, LOW);
+  analogWrite(LMOTOR_PWM, LEFT_SPEED);
+  analogWrite(RMOTOR_PWM, RIGHT_SPEED);
+}
+
+void stop()
+{
+  digitalWrite(LEFT_MOTOR_1, LOW);
+  digitalWrite(LEFT_MOTOR_2, LOW);
+  digitalWrite(RIGHT_MOTOR_1, LOW);
+  digitalWrite(RIGHT_MOTOR_2, LOW);
+  analogWrite(LMOTOR_PWM, 0);
+  analogWrite(RMOTOR_PWM, 0);
+}
 void setup() {
   Serial.begin(9600);
   pinMode(LEFT_US_TRIG, OUTPUT);
@@ -42,8 +92,28 @@ void setup() {
   pinMode(RMOTOR_PWM, OUTPUT);
   Serial.println("Obstacle avoider bot initialized");
   delay(1000);
+  digitalWrite(LEFT_US_TRIG, LOW);
+  digitalWrite(RIGHT_US_TRIG, LOW);
+  delay(100);
 }
 
 void loop() {
-  Serial.println("Hello, World!");
+  left_distance = measure_distance(LEFT_US_TRIG, LEFT_US_ECHO);
+  right_distance = measure_distance(RIGHT_US_TRIG, RIGHT_US_ECHO);
+  Serial.println("Left distance: " + String(left_distance));
+  Serial.println("Right distance: " + String(right_distance));
+  delay(100);
+  if (left_distance > MAX_DISTANCE && right_distance > MAX_DISTANCE) {
+    moveForward();
+  }
+  else if (left_distance < MAX_DISTANCE && right_distance > MAX_DISTANCE) {
+    moveRight();
+  }
+  else if (left_distance > MAX_DISTANCE && right_distance < MAX_DISTANCE) {
+    moveLeft();
+  }
+  else if (left_distance < MAX_DISTANCE && right_distance < MAX_DISTANCE) {
+    stop();
+  }
+  delay(100);
 }
