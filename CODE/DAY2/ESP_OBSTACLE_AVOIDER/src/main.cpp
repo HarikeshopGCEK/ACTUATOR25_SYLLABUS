@@ -1,17 +1,17 @@
 #include <Arduino.h>
 // Define the pins for the ultrasonic sensors (NodeMCU v2)
-#define LEFT_US_TRIG D2    // GPIO4
-#define LEFT_US_ECHO D1    // GPIO5
-#define RIGHT_US_TRIG D6   // GPIO12
-#define RIGHT_US_ECHO D7   // GPIO13
+#define LEFT_US_TRIG D2
+#define LEFT_US_ECHO D3
+#define RIGHT_US_TRIG D4
+#define RIGHT_US_ECHO D5
 
 // Define the pins for the motors (NodeMCU v2)
-#define LEFT_MOTOR_1 D7    // GPIO13
-#define LEFT_MOTOR_2 D8    // GPIO15
-#define RIGHT_MOTOR_1 D3   // GPIO0
-#define RIGHT_MOTOR_2 D4   // GPIO2
-#define LMOTOR_PWM D5      // GPIO14 (PWM capable)
-#define RMOTOR_PWM D6      // GPIO12 (PWM capable)
+#define LEFT_MOTOR_1 D6
+#define LEFT_MOTOR_2 D7
+#define RIGHT_MOTOR_1 D8
+#define RIGHT_MOTOR_2 D0
+#define LMOTOR_PWM D1
+#define RMOTOR_PWM D1
 // Define the speed for the motors
 #define LEFT_SPEED 100
 #define RIGHT_SPEED 100 
