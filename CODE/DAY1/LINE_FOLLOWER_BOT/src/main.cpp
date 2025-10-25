@@ -5,7 +5,7 @@
 #define RIGHT_IR 5
 #define LEFT_MOTOR_1 6
 #define LEFT_MOTOR_2 7
-#define RIGHT_MOTOR_1 8
+#define RIGHT_MOTOR_1 8 
 #define RIGHT_MOTOR_2 9
 #define LMOTOR_PWM 10
 #define RMOTOR_PWM 11
@@ -88,14 +88,18 @@ void loop() {
   delay(100);
   if (LDATA == 0 && RDATA == 0) {
     moveForward();
+    Serial.println("Forward");
   }
   else if (LDATA == 0 && RDATA == 1) {
-    moveLeft();
+    moveRight();
+    Serial.println("Right");
   }
   else if (LDATA == 1 && RDATA == 0) {
-    moveRight();
+    moveLeft();
+    Serial.println("Right");
   }
   else if (LDATA == 1 && RDATA == 1) {
     stop();
   }
+  delay(500);
   }
