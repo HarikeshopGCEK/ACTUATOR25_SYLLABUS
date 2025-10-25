@@ -34,7 +34,7 @@ void moveBackward()
   analogWrite(RMOTOR_PWM, RIGHT_SPEED);
 }
 
-void moveLeft()
+void moveRight()
 {
   digitalWrite(LEFT_MOTOR_1, HIGH);
   digitalWrite(LEFT_MOTOR_2, LOW);
@@ -44,7 +44,7 @@ void moveLeft()
   analogWrite(RMOTOR_PWM, RIGHT_SPEED);
 }
 
-void moveRight()
+void moveLeft()
 {
   digitalWrite(LEFT_MOTOR_1, LOW);
   digitalWrite(LEFT_MOTOR_2, HIGH);
