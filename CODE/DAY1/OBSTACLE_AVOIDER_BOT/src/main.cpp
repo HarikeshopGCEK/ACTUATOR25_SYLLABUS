@@ -9,10 +9,10 @@
 // Define the pins for the motors
 #define LEFT_MOTOR_1 8
 #define LEFT_MOTOR_2 9
-#define RIGHT_MOTOR_1 10
-#define RIGHT_MOTOR_2 11
-#define LMOTOR_PWM 12
-#define RMOTOR_PWM 3
+#define RIGHT_MOTOR_1 12
+#define RIGHT_MOTOR_2 13
+#define LMOTOR_PWM 10
+#define RMOTOR_PWM 11
 // Define the speed for the motors
 #define LEFT_SPEED 100
 #define RIGHT_SPEED 100 
