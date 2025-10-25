@@ -24,8 +24,8 @@ float left_distance, right_distance;
   digitalWrite(trig, HIGH);
   delayMicroseconds(10);
   digitalWrite(trig, LOW);
-  duration = pulseIn(echo, HIGH);
-  distance = duration * 0.034 / 2;
+  float duration = pulseIn(echo, HIGH);
+  float distance = duration * 0.034 / 2;
   return distance;
  }
 
