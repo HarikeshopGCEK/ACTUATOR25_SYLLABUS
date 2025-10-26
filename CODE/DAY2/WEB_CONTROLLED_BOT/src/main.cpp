@@ -2,12 +2,12 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
-#define LEFT_MOTOR_1 D6
-#define LEFT_MOTOR_2 D7
-#define RIGHT_MOTOR_1 D8
-#define RIGHT_MOTOR_2 D0
+#define LEFT_MOTOR_1 D4
+#define LEFT_MOTOR_2 D5
+#define RIGHT_MOTOR_1 D6
+#define RIGHT_MOTOR_2 D7
 #define LMOTOR_PWM D1
-#define RMOTOR_PWM D1
+#define RMOTOR_PWM D2
 
 #define LEFT_SPEED 100
 #define RIGHT_SPEED 100
